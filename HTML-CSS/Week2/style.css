@@ -8,55 +8,55 @@ html {
 	width: auto;
 	border-style: solid;
 	margin:2%;
-  background: white;
+	background: white;
 }
 
 #grid-floats li {
-  display: inline-block;
-  float: left;
-  margin: 1%;
-  width: 60%;
-  height: 30rem;
-  padding: 0px;
-  background: white;
+	display: inline-block;
+	float: left;
+	margin: 1%;
+	width: 60%;
+	height: 30rem;
+	padding: 0px;
+	background: white;
 	border-style: solid;
 }
 
 #grid-floats p {
-  padding: 0%;
+	padding: 0%;
 }
 
 @media screen and (max-width: 800px) {
-  #grid-floats li {
-    width: 46%;
+	#grid-floats li {
+	width: 46%;
 		background: red;
-  }
-  li:nth-child(1) {
-    width: 95% !important;
-  }
+	}
+	li:nth-child(1) {
+	width: 95% !important;
+	}
 	li:nth-child(1) p {
 		font-size: 200%;
 	}		
 }
 
-@media screen and (min-width: 800px) and (max-width: 1200px)  {
-  #grid-floats li {
-    width: 30%;
+@media screen and (min-width: 800px) and (max-width: 1200px)	{
+	#grid-floats li {
+	width: 30%;
 		background: yellow;
-  }
-  li:nth-child(-n+2) {
+	}
+	li:nth-child(-n+2) {
 		width: 46.5% !important; 
-  }
+	}
 	li:nth-child(-n+2) p {
 		font-size: 200%;
 	}		
 }
 
 @media screen and (min-width: 1200px) {
-  #grid-floats li {
-    width: 21.7%;
+	#grid-floats li {
+	width: 21.7%;
 		background: green;
-  }
+	}
 	li:nth-child(1) {
 		width: 46% !important;
 	}
@@ -66,40 +66,40 @@ html {
 }
 
 #grid-flex {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
 	flex-wrap: wrap;
 	clear: both;
 }
 
 #grid-flex p {
-  padding: 0%;
+	padding: 0%;
 }
 
 #grid-flex li {
-  width: 25%;
-  margin: 1%;
-  background: beige;
-  padding: 0%;
-  border-style: solid;
+	width: 25%;
+	margin: 1%;
+	background: beige;
+	padding: 0%;
+	border-style: solid;
 }
 
 #grid-flex img {
-  width: 50%;
-  height: auto;
-  float: left;
-  margin: 1%;
+	width: 50%;
+	height: auto;
+	float: left;
+	margin: 1%;
 }
 
 @media screen and (max-width: 800px) {
-  #grid-flex li {
+	#grid-flex li {
 		background: red;
-    width: 46%;
-  }
+	width: 46%;
+	}
 	li:nth-child(1) {
 		width: 96% !important;
 	}
@@ -109,10 +109,10 @@ html {
 }
 
 @media screen and (min-width: 800px) and (max-width: 1200px) {
-  #grid-flex li {
+	#grid-flex li {
 		background: yellow;
-    width: 28%;
-  }
+	width: 28%;
+	}
 	li:nth-child(-n+2) {
 		width: 45% !important;
 	}
@@ -122,9 +122,9 @@ html {
 }
 
 @media screen and (min-width: 1200px) {
-  #grid-flex li {
+	#grid-flex li {
 		background: green;
-    width: 21%;
+	width: 21%;
 	}
 	li:nth-child(1) {
 		width: 46% !important;
