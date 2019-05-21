@@ -1,0 +1,103 @@
+html
+	background: white
+
+#grid-floats img 
+	float: left
+	height: 25% 
+	width: auto
+	border-style: solid 
+	margin: 2%
+	background: white
+
+#grid-floats li
+	display: inline-block
+	float: left
+	margin: 1%
+	width: 60%
+	height: 30rem
+	padding: 0px
+	background: white
+	border-style: solid
+
+#grid-floats p
+	padding: 0%
+
+@media screen and (max-width: 800px)
+	#grid-floats li
+		width: 46%
+		background: red
+	li:nth-child(1)
+		width: 95% !important 
+		p
+			font-size: 200%
+
+@media screen and (min-width: 800px) and (max-width: 1200px)	
+	#grid-floats li 
+		width: 30%
+		background: yellow
+	li:nth-child(-n+2) 
+		width: 46.5% !important
+		p
+			font-size: 200%
+
+@media screen and (min-width: 1200px) 
+	#grid-floats li 
+		width: 21.7%
+		background: green
+	li:nth-child(1) 
+		width: 46% !important
+		p
+			font-size: 200%
+
+#grid-flex 
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+	display: flex
+	justify-content: space-around
+	flex-direction: row
+	flex-wrap: wrap
+	clear: both
+	p 
+		padding: 0%
+
+	li 
+		width: 25%
+		margin: 1%
+		background: beige
+		padding: 0%
+		border-style: solid
+
+	img 
+		width: 50%
+		height: auto
+		float: left
+		margin: 1%
+
+@media screen and (max-width: 800px) 
+	#grid-flex li 
+		background: red
+		width: 46%
+
+	li:nth-child(1) 
+		width: 96% !important
+		p
+			font-size: 200%
+
+@media screen and (min-width: 800px) and (max-width: 1200px)
+	#grid-flex li
+		background: yellow
+		width: 28%
+	li:nth-child(-n+2)
+		width: 45% !important
+		p 
+			font-size: 200%
+
+@media screen and (min-width: 1200px) 
+	#grid-flex li 
+		background: green
+		width: 21%
+	li:nth-child(1) 
+		width: 46% !important
+		p 
+			font-size: 200%
