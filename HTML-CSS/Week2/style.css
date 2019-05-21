@@ -28,11 +28,11 @@ html {
 
 @media screen and (max-width: 800px) {
 	#grid-floats li {
-	width: 46%;
+		width: 46%;
 		background: red;
 	}
 	li:nth-child(1) {
-	width: 95% !important;
+		width: 95% !important;
 	}
 	li:nth-child(1) p {
 		font-size: 200%;
@@ -41,7 +41,7 @@ html {
 
 @media screen and (min-width: 800px) and (max-width: 1200px)	{
 	#grid-floats li {
-	width: 30%;
+		width: 30%;
 		background: yellow;
 	}
 	li:nth-child(-n+2) {
@@ -54,7 +54,7 @@ html {
 
 @media screen and (min-width: 1200px) {
 	#grid-floats li {
-	width: 21.7%;
+		width: 21.7%;
 		background: green;
 	}
 	li:nth-child(1) {
@@ -98,7 +98,7 @@ html {
 @media screen and (max-width: 800px) {
 	#grid-flex li {
 		background: red;
-	width: 46%;
+		width: 46%;
 	}
 	li:nth-child(1) {
 		width: 96% !important;
@@ -111,7 +111,7 @@ html {
 @media screen and (min-width: 800px) and (max-width: 1200px) {
 	#grid-flex li {
 		background: yellow;
-	width: 28%;
+		width: 28%;
 	}
 	li:nth-child(-n+2) {
 		width: 45% !important;
@@ -124,7 +124,7 @@ html {
 @media screen and (min-width: 1200px) {
 	#grid-flex li {
 		background: green;
-	width: 21%;
+		width: 21%;
 	}
 	li:nth-child(1) {
 		width: 46% !important;
