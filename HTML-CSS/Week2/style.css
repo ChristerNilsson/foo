@@ -2,6 +2,10 @@ html {
   background: white;
 }
 
+h2 {
+  clear: both;
+}
+
 #grid-floats img {
   float: left;
   height: 25%;
