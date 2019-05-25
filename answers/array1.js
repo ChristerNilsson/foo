@@ -1,14 +1,14 @@
 assert = require('assert').deepStrictEqual
 print = console.log
 print('###################') 
-print('')
+print('') 
 
-// ANSWERS 
+// ANSWERS   
 
-//// How does assert work? 
+//// How does assert work?  
 //assert(1+2, 12)   
 assert('1'+'2', '12')   
-assert(1+2, 3)
+assert(1+2, 3) 
 
 //// Grow the list 
 a = [3,4] //
@@ -101,10 +101,15 @@ result = words.split(' ').join('-') //
 //// INSERT CODE HERE
 assert('This-is-my-first-sentence',result)
 
-//// Sort numerically
-a = [5,4,1,2,1,9,4,3,7,4]
+//// Sort alphabetically
+a = [5,4,12,1,9,4,3,7,4] 
 a.sort() //
-assert([1,1,2,3,4,4,4,5,7,9],a) 
+assert([1,12,3,4,4,4,5,7,9],a) 
+
+//// Sort numerically
+a = [5,4,12,1,9,4,3,7,4] 
+a.sort((a,b) => a-b) //
+assert([1,3,4,4,4,5,7,9,12],a) 
 
 //// Sort alphabetically
 a = 'delta alfa bravo charlie'.split(' ')

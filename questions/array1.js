@@ -3,9 +3,9 @@ print = console.log
 print('###################') 
 print('')
 
-// QUESTIONS 
+// QUESTIONS  
 
-//// How does assert work? 
+//// How does assert work?  
 //assert(1+2, 12)   
 assert('1'+'2', '12')   
 assert(1+2, 3)
@@ -79,9 +79,15 @@ words = 'This is my first sentence'
 //// INSERT CODE HERE
 assert('This-is-my-first-sentence',result)
 
+//// Sort alphabetically
+a = [5,4,12,1,9,4,3,7,4] 
+//// INSERT CODE HERE
+assert([1,12,3,4,4,4,5,7,9],a) 
+
 //// Sort numerically
-a = [5,4,1,2,1,9,4,3,7,4]
-assert([1,1,2,3,4,4,4,5,7,9],a) 
+a = [5,4,12,1,9,4,3,7,4] 
+//// INSERT CODE HERE
+assert([1,3,4,4,4,5,7,9,12],a) 
 
 //// Sort alphabetically
 a = 'delta alfa bravo charlie'.split(' ')
