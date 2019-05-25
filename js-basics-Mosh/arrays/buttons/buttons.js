@@ -1,11 +1,11 @@
-// assert = require('assert').deepStrictEqual   // node.js
-// range = require('lodash').range              // node.js
-assert = chai.assert.deepEqual               // browser
-range = _.range                              // browser
-print = console.log
+// const assert = require('assert').deepStrictEqual   // node.js
+// const range = require('lodash').range              // node.js
+const assert = chai.assert.deepEqual               // browser
+const range = _.range                              // browser
+const print = console.log
 print('##### Begin #####')
 
-// assert(1+2,3)
+// assert(1+2,4)
 // assert(f(5),25)
 // assert(f(6),36)
 
@@ -25,5 +25,9 @@ print('##### Begin #####')
 // assert(buttons[1].click(), 'Cancel')
 // assert(buttons[0].inside(0,0), false)
 // assert(buttons[1].inside(200,100), true)
+
+// console.assert([]===[])
+// chai.assert.equal([],[]) 
+// chai.assert.deepEqual([],[]) 
 
 print('#####  End  #####')
