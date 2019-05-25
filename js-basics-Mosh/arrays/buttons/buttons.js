@@ -5,7 +5,7 @@ const range = _.range                              // browser
 const print = console.log
 print('##### Begin #####')
 
-// assert(1+2,3)
+// assert(1+2,4)
 // assert(f(5),25)
 // assert(f(6),36)
 
