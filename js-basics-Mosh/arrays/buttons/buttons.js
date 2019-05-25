@@ -1,11 +1,15 @@
-// assert = require('assert').deepStrictEqual
-// range = require('lodash').range
-range = _.range
-assert = chai.assert.deepEqual
+// assert = require('assert').deepStrictEqual   // node.js
+// range = require('lodash').range              // node.js
+assert = chai.assert.deepEqual               // browser
+range = _.range                              // browser
 print = console.log
 print('##### Begin #####')
 
-assert(buttons[0].x, 100)
+// assert(1+2,3)
+// assert(f(5),25)
+// assert(f(6),36)
+
+// assert(buttons[0].x, 100)
 // assert(buttons[0].y, 100)
 // assert(buttons[0].r, 50)
 // assert(buttons[0].title, 'Ok')
