@@ -5,26 +5,28 @@ const range = _.range                              // browser
 const print = console.log
 print('##### Begin #####')
 
-// assert(1+2,4)
+// assert(1+2,3)
 // assert(f(5),25)
 // assert(f(6),36)
 
-// assert(buttons[0].x, 100)
-// assert(buttons[0].y, 100)
-// assert(buttons[0].r, 50)
-// assert(buttons[0].title, 'Ok')
-// assert(buttons[0].click, click)
+// assert(ok.x, 100) 
+// assert(ok.y, 100)
+// assert(ok.r, 50)
+// assert(ok.title, 'Ok')
+// assert(ok.click, click)
 
-// assert(buttons[1].x, 200)
-// assert(buttons[1].y, 100)
-// assert(buttons[1].r, 50)
-// assert(buttons[1].title, 'Cancel')
-// assert(buttons[1].click, click)
+// assert(cancel.x, 200)
+// assert(cancel.y, 100)
+// assert(cancel.r, 50)
+// assert(cancel.title, 'Cancel')
+// assert(cancel.click, click)
 
-// assert(buttons[0].click(), 'Ok')
-// assert(buttons[1].click(), 'Cancel')
-// assert(buttons[0].inside(0,0), false)
-// assert(buttons[1].inside(200,100), true)
+// assert(ok.click(), 'Ok')
+// assert(cancel.click(), 'Cancel')
+// assert(ok.inside(0,0), false)
+// assert(cancel.inside(200,100), true)
+
+// assert(buttons, [ok,cancel])
 
 // console.assert([]===[])
 // chai.assert.equal([],[]) 
