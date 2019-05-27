@@ -1,6 +1,6 @@
 assert = require('assert').deepEqual
 print = console.log
-print '###################'
+print '##### begin #####'
 
 HH = 
 	'00':'12'
@@ -34,5 +34,4 @@ assert '12:59 pm', f '12:59'
 assert '01:00 pm', f '13:00'
 assert '11:59 pm', f '23:59'
 
-print 'ok'
-print '###################'
+print '#####  end  #####'
