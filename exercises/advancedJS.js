@@ -125,39 +125,5 @@ fetch('https://raw.githubusercontent.com/ChristerNilsson/vscode-foo/master/.vs/V
 //     print('Wheeyee!')
 //   })
 
-N = 1000   //0000000
- 
-sum=0
-for (i of range(N)) sum+=1
- 
-function * myRange (a,b,c=1) {
-  if (arguments.length === 1) b = a 
-	if (arguments.length === 1) a = 0
-	if (a < b) 
-		for (let i=a; i<b; i+=c) yield i;
-	else 
-		for (let i=a; i>b; i-=c) yield i; 	
-}
-
-function expandRange () {
-	result = []
-	for (let i of myRange(...arguments)) result.push(i)
-	return result
-}
-
-assert([], expandRange(0))
-assert([0], expandRange(1))
-assert([0,1,2,3,4], expandRange(5))
-assert([5,6,7,8,9], expandRange(5,10))
-assert([0,2,4,6,8], expandRange(0,10,2))
-assert([10,9,8,7,6], expandRange(10,5))
-assert([-1,-2,-3,-4], expandRange(-1,-5))
-assert([-2,-1,0,1,2], expandRange(-2,3))
-
-sum=0
-for (i of myRange(N)) sum+=1
-
-sum=0
-for (let i=0; i<N; i++) sum+=1
 
 print('##########')
