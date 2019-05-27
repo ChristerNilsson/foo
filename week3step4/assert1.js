@@ -16,6 +16,6 @@ assert(howMany(lstC),5)
 assert(removeAt(lstC,3),["blowfish", "meerkat", "capricorn", "turtle"])
 
 assert(position(lstC,"meerkat"),1)
-assert(removeAt(lstC, 1),["blowfish", "capricorn", "turtle"])
+assert(remove(lstC, "meerkat"),["blowfish", "capricorn", "turtle"])
 
 print('#####  end  #####') 
