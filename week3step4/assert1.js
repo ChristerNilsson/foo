@@ -13,7 +13,7 @@ let lstC = addOneAt(lstB,"meerkat",1)
 assert(lstC, ["blowfish", "meerkat", "capricorn", "giraffe", "turtle"])
 
 assert(howMany(lstC),5)
-assert(remove(lstC,3),["blowfish", "meerkat", "capricorn", "turtle"])
+assert(removeAt(lstC,3),["blowfish", "meerkat", "capricorn", "turtle"])
 
 assert(position(lstC,"meerkat"),1)
 assert(removeAt(lstC, 1),["blowfish", "capricorn", "turtle"])
