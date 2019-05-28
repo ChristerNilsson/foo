@@ -1,4 +1,4 @@
-assert = require('assert').deepEqual
+assert = require('assert').deepStrictEqual
 range = require('lodash').range
 print = console.log
 

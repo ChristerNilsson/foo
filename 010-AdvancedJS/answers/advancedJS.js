@@ -4,7 +4,7 @@ range = require('lodash').range
 print = console.log
 print('##########') 
  
-//// Default parameters
+//// Default parameters 
 f = (x,y=10) => [x,y]
 assert([1,10], f(1)) 
  

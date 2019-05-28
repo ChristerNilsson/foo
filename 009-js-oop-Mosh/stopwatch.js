@@ -1,9 +1,11 @@
 // const assert = require('assert').deepStrictEqual   // node.js
 // const range = require('lodash').range              // node.js
-const assert = chai.assert.deepEqual               // browser
+const assert = chai.assert.deepStrictEqual         // browser
 const range = _.range                              // browser
 const print = console.log
 print('##### Begin #####')
+
+assert(1+2,3)
 
 function StopWatch() {
 		let ticking = false

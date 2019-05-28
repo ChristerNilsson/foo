@@ -1,11 +1,10 @@
 assert = require('assert').deepStrictEqual
 print = console.log
-print('###################') 
-print('') 
+print('##### begin #####') 
 
 // ANSWERS   
 
-//// How does assert work?  
+//// How does assert work?   
 //assert(1+2, 12)   
 assert('1'+'2', '12')   
 assert(1+2, 3) 
@@ -256,5 +255,4 @@ assert(e,f)
 //// Look at this tree in the debugger
 //print([1,null,true,[],'abc',{a:4, b:7}])
 
-print('') 
-print('###################')
+print('#####  end  #####')

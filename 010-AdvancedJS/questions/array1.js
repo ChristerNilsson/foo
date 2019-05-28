@@ -5,7 +5,7 @@ print('')
 
 // QUESTIONS  
 
-//// How does assert work?  
+//// How does assert work?   
 //assert(1+2, 12)   
 assert('1'+'2', '12')   
 assert(1+2, 3)

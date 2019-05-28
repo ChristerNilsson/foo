@@ -1,8 +1,8 @@
-assert = require('assert').deepEqual
+assert = require('assert').deepStrictEqual
 range = require('lodash').range
 print = console.log
 print '##### begin #####'
- 
+  
 substring = (left, right, start, stop) -> 
 	left_start = start
 	left_stop = Math.min stop,left.length

@@ -1,7 +1,7 @@
-assert = require('assert').deepEqual
+assert = require('assert').deepStrictEqual
 print = console.log
 print '##### begin #####'
-
+ 
 HH = 
 	'00':'12' 
 	'13':'01'

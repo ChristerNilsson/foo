@@ -1,8 +1,8 @@
-assert = require('assert').deepEqual
+assert = require('assert').deepStrictEqual
 range = require('lodash').range
 print = console.log
 print('##### begin #####')  
- 
+  
 function * myRange (a,b,c=1) {
   if (arguments.length === 1) b = a  
 	if (arguments.length === 1) a = 0

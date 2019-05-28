@@ -1,9 +1,9 @@
 _ = require 'lodash'
 range = _.range  
-assert = require('assert').deepEqual
+assert = require('assert').deepStrictEqual
 print = console.log
 print '##### begin #####'     
-
+ 
 reverse = (a) -> a.reverse() 
 sign = (a,b) -> (if a < b then 1 else (if a > b then -1 else 0))
 assert -1, sign 2,1
