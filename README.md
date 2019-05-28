@@ -21,4 +21,4 @@
 
 * Sometimes you need to touch the file to make Run On Save execute.
 * Output Tasks must be set to Run On Save manually.
-* ztart.bat is actually not needed. Use *Git Bash Here* instead
+* ztart.bat is actually not needed. Use *Open with Code* instead
