@@ -29,4 +29,41 @@ assert([10,9,8,7,6], expandRange(10,5))
 assert([-1,-2,-3,-4], expandRange(-1,-5))
 assert([-2,-1,0,1,2], expandRange(-2,3))
 
-print('#####  end  #####') 
+a = []
+for (index in [10,20,30]) a.push(index)
+assert(a,['0','1','2'])
+
+a = []
+for (value of [10,20,30]) a.push(value)
+assert(a,[10,20,30])
+
+obj = {a:10,b:20,c:30}
+a = []
+for (key in obj) a.push(key)
+assert(a,['a','b','c'])
+
+a = []
+for (value of [10,20,30]) a.push(value)
+assert(a,[10,20,30])
+
+arr = [10,20,30]
+arr[5] = 60
+
+a = []
+for (index in arr) a.push(index)
+assert(a,['0','1','2','5'])
+
+a = []
+for (value of arr) a.push(value)
+assert(a,[10,20,30,undefined,undefined,60])
+
+a = arr.map ((x) => x)
+assert(a,[10,20,30,,,60])
+
+assert('a' in obj, true)
+assert(0 in arr, true)
+assert(arr.includes(10), true)
+//assert(10 of obj, true)
+//assert(obj.includes(30), true)
+
+print('#####  end  #####')  
