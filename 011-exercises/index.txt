@@ -1,0 +1,22 @@
+assert = require('assert').deepEqual
+range = require('lodash').range
+print = console.log
+
+print('##### begin #####') 
+
+f = (lst) => lst.map(x => x+x)
+assert(f([0,1,2,3,4,5,6,7,8,9,10]), [0,2,4,6,8,10,12,14,16,18,20])
+
+f = (lst) => lst.map(x => x%2)
+assert(f([0,1,2,3,4,5,6,7,8,9,10]), [0,1,0,1,0,1,0,1,0,1,0])
+
+f = (lst) => lst.map(x => x > 5 ? 1 : 0)
+assert(f([0,1,2,3,4,5,6,7,8,9,10]), [0,0,0,0,0,0,1,1,1,1,1])
+
+f = (lst) => lst.map(x => Math.floor(x/2) % 2)
+assert(f([0,1,2,3,4,5,6,7,8,9,10]), [0,0,1,1,0,0,1,1,0,0,1])
+
+f = (lst) => lst.map(x => (x*x+3*x+7))
+assert(f([0,1,2,3,4,5,6,7,8,9,10]), [7,11,17,25,35,47,61,77,95,115,137])
+
+print('#####  end  #####')
