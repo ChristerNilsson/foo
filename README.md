@@ -1,6 +1,6 @@
 # Node
 
-## Setupp
+## Setup
 
 * Use createNode to make a copy of 000-Node
 * Change the name of the directory. E.g. 001-project.
