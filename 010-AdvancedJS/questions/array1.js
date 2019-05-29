@@ -1,7 +1,7 @@
-assert = require('assert').deepStrictEqual
-print = console.log
-print('###################') 
-print('')
+const assert = chai.assert.deepStrictEqual
+const range = _.range
+const print = console.log
+print('##### begin #####')
 
 // QUESTIONS  
 

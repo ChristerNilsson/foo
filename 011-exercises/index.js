@@ -1,8 +1,7 @@
-assert = require('assert').deepStrictEqual
-range = require('lodash').range
-print = console.log
-
-print('##### begin #####') 
+const assert = chai.assert.deepStrictEqual
+const range = _.range
+const print = console.log
+print('##### begin #####')
 
 assert(f([0,1,2,3,4,5,6,7,8,9,10]), [0,2,4,6,8,10,12,14,16,18,20])
 assert(f([0,1,2,3,4,5,6,7,8,9,10]), [0,1,0,1,0,1,0,1,0,1,0])

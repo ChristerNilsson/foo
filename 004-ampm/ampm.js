@@ -1,5 +1,6 @@
-assert = require('assert').deepStrictEqual
-print = console.log
+const assert = chai.assert.deepStrictEqual
+const range = _.range
+const print = console.log
 print('##### begin #####')
  
 HH = {

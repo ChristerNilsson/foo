@@ -1,7 +1,7 @@
-assert = require('assert').deepStrictEqual
-range = require('lodash').range
-print = console.log
-print('###################') 
+const assert = chai.assert.deepStrictEqual
+const range = _.range
+const print = console.log
+print('##### begin #####')
 
 // 1. Create a function that takes 3 arguments and returns the sum of the these arguments.
 f = (a,b,c) => a+b+c

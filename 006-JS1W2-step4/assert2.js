@@ -1,6 +1,7 @@
-assert = require('assert').deepStrictEqual
-print = console.log
-print('##### begin #####') 
+const assert = chai.assert.deepStrictEqual
+const range = _.range
+const print = console.log
+print('##### begin #####')
 
 // 1.Create a function that takes 3 arguments and returns the sum of the these arguments.
 assert(sum3(23,4,5),32)

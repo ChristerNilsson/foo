@@ -1,6 +1,7 @@
-assert = require('assert').deepStrictEqual
-print = console.log
-print('###################') 
+const assert = chai.assert.deepStrictEqual
+const range = _.range
+const print = console.log
+print('##### begin #####')
 
 // 1. Write a console.log statement saying "Hello World!" for each language that you know.
 // For example:

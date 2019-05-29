@@ -1,5 +1,7 @@
 # vscode
 
+Live Server and Run On Save must work together.
+
 * https://www.youtube.com/watch?v=IIKndRX5qHw
 * install emeraldwalk Run On Save
 
