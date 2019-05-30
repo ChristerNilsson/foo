@@ -1,3 +1,7 @@
+8 decimal numbers of 30 digits.
+
+Approx 100 bytes of data.
+
 [Wikipedia](https://en.wikipedia.org/wiki/Difference_engine)
 
 [Video Difference Engine](https://www.youtube.com/watch?v=be1EM3gQkAY)

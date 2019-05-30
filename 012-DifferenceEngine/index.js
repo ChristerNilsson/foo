@@ -3,15 +3,17 @@ const range = _.range
 const print = console.log
 print('##### begin #####')
 
-N = 8
+crank = (numbers) => {
+	for (i of range(numbers.length-1)) numbers[i] += numbers[i+1]
+}
 
-engine = (n, lst) => {
-	result = [] 
-	for (j of range(n)) {
-		result.push(lst[0])
-		for (i of range(N-1)) lst[i] += lst[i+1]
+engine = (cranks, numbers) => {
+	printer = [] 
+	for (j of range(cranks)) {
+		printer.push(numbers[0])
+		crank(numbers)
 	}
-	return result
+	return printer
 }
 
 assert(engine(0,[9,0,0,0,0,0,0,0]), [])
