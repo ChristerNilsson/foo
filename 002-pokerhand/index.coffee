@@ -6,7 +6,7 @@ print '##### begin #####'
 reverse = (a) -> a.reverse()  
 sign = (a,b) -> (if a < b then 1 else (if a > b then -1 else 0))
 assert -1, sign 2,1
-assert  0, sign 3,3
+assert  0, sign 3,333 
 assert  1, sign 1,2 
 
 compare = (a,b) ->
