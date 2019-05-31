@@ -5,7 +5,6 @@ print('##### begin #####')
 
 crank = (numbers) => {
 	for (i of range(numbers.length-1)) numbers[i] += numbers[i+1]
-	return numbers
 }
 
 engine = (cranks, numbers) => {
@@ -16,16 +15,6 @@ engine = (cranks, numbers) => {
 	}
 	return printer
 }
-
-//f(x)=x 
-assert(crank([0,1,0,0,0,0,0,0]), [1,1,0,0,0,0,0,0])
-assert(crank([1,1,0,0,0,0,0,0]), [2,1,0,0,0,0,0,0])
-
-//f(x)=x*x
-assert(crank([0,1,2,0,0,0,0,0]), [1,3,2,0,0,0,0,0])
-assert(crank([1,3,2,0,0,0,0,0]), [4,5,2,0,0,0,0,0])
-assert(crank([4,5,2,0,0,0,0,0]), [9,7,2,0,0,0,0,0])
-assert(crank([9,7,2,0,0,0,0,0]), [16,9,2,0,0,0,0,0])
 
 assert(engine(0,[9,0,0,0,0,0,0,0]), [])
 assert(engine(1,[9,0,0,0,0,0,0,0]), [9])
@@ -39,5 +28,35 @@ assert(engine(5,[1,3,2,0,0,0,0,0]), [1,4,9,16,25])
 assert(engine(5,[2,6,4,0,0,0,0,0]), [2,8,18,32,50])
 
 assert(engine(5,[1,7,12,6,0,0,0,0]), [1,8,27,64,125])
+
+//for (i of range(4,0,-1)) print(i)
+//############
+makeDifferences = (lst) => {
+	n = lst.length
+	for (i of range(n-1)) 
+		for (j of range(n-1,i,-1)) 
+			lst[j] -= lst[j-1]
+	return lst
+}
+
+assert(makeDifferences([0,1,4,9,16,25,36,49]), [0,1,2,0,0,0,0,0])
+
+sq = (x) => x*x
+
+// calculate square
+square = []
+for (i of range(8)) 
+	square.push(sq(0.1*i))
+//print(sinus)
+diff = square.slice()
+makeDifferences(diff)
+//print(diff)
+print(engine(101,diff))
+
+for (i in range(11))
+	print(sq(1*i))
+
+
+
 
 print('#####  end  #####')
