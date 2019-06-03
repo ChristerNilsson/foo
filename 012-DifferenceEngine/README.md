@@ -10,4 +10,4 @@ Approx 100 bytes of data.
 
 [Wolfram: Untangling the Tale of Ada Lovelace](https://blog.stephenwolfram.com/2015/12/untangling-the-tale-of-ada-lovelace/)
 
-[Bernouilli Number](https://en.wikipedia.org/wiki/Bernoulli_number)
+[Bernoulli Number](https://en.wikipedia.org/wiki/Bernoulli_number)
