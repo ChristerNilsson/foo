@@ -40,18 +40,27 @@ function row () {
 	let w = n
 	for (let i of range(0,lst.length,2)) w -= lst[i+1]
 	lst[lst.length-1] = w
+	const widths = []
 	for (let i of range(0,lst.length,2)) {
 		let element = lst[i]
 		let position = lst[i+1]/n
-		element.style.width = `${100*(position)-2*margin}%`
+		element.style.width = `${100*position-2*margin}%`
+		widths.push(100*position)
 		element.style.margin = `${margin}%`
 	}
+	return widths
 }
 
 const root = document.getElementById('root')
 const number = createPara(0)
 number.style.fontSize = '250%'
 const incr = createButton('incr', () => update('incr'))
+
+const dummy = {style:{}}
+assert(row(dummy),[100])
+assert(row(dummy,1,dummy),[50,50])
+assert(row(dummy,0.5,dummy),[25,75])
+assert(row(dummy,1.5,dummy),[75,25])
 
 if (innerWidth <= 500) {
 	row(number)

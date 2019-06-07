@@ -44,19 +44,22 @@ const undo = () => {
 }
 
 function row () {
+	const margin = 0.3 // %
 	const lst = Array.from(arguments)
 	lst.push(0.0)
-	let n = lst.length/2
+	const n = lst.length/2
 	let w = n
 	for (let i of range(0,lst.length,2)) w -= lst[i+1]
 	lst[lst.length-1] = w
-	const margin = 0.3 // %
+	const widths = []
 	for (let i of range(0,lst.length,2)) {
-		let element = lst[i]
-		let position = lst[i+1]/n
-		element.style.width = `${100*(position)-2*margin}%`
+		const element = lst[i]
+		const position = lst[i+1]/n
+		widths.push(100*position)
+		element.style.width = `${100*position-2*margin}%`
 		element.style.margin = `${margin}%`
 	}
+	return widths
 }
 
 const rnd = (min, max) => Math.floor(Math.random() * (max - min) ) + min
@@ -84,6 +87,22 @@ const counter = createPara(0)
 counter.style.fontSize='250%'
 const bundo = createButton('undo', () => undo())
 
-row(from,1,to)
-row(add,1,mul,1,div)
-row(bnew,1,counter,1,bundo)
+const dummy = {style:{}}
+assert(row(dummy),[100])
+assert(row(dummy,1,dummy),[50,50])
+assert(row(dummy,1,dummy,1,dummy),[33.33333333333333,33.33333333333333,33.33333333333333])
+
+if (innerWidth <= 500) {
+	row(from)
+	row(to)
+	row(add)
+	row(mul)
+	row(div)
+	row(bnew)
+	row(counter)
+	row(bundo)
+} else {
+	row(from,1,to)
+	row(add,1,mul,1,div)
+	row(bnew,1,counter,1,bundo)
+}
