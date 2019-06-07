@@ -20,11 +20,12 @@
 ### layout
 
 * Use row() to set the widths of the elements
-* row(a,1,b) <=> 1 + 1 == 2
-* row(a,0.5,b) <=> 0.5 + 1.5 == 2
-* row(a,1,b,1,c) <=> 1 + 1 + 1 == 3
-* row(a,1.5,b,0.75,c) <=> 1.5 + 0.75 + 0.75 == 3
-* row(a,2,b,0.5,c) <=> 2 + 0.5 + 0.5 == 3
+* The numbers are relative. Any numbers will do. Percent, pixels, inches, whatever.
+* row(a,1,b,1) <=> 1 + 1 == 2
+* row(a,0.5,b,1.5) <=> 0.5 + 1.5 == 2
+* row(a,1,b,1,c,1) <=> 1 + 1 + 1 == 3
+* row(a,150,b,75,c,75) <=> 150 + 75 + 75 == 300
+* row(a,2,b,0.5,c,0.5) <=> 2 + 0.5 + 0.5 == 3
 
 ### Extra exercises
 * add Incr button
