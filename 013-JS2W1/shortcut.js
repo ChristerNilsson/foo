@@ -1,9 +1,10 @@
 "use strict"
+
 const assert = chai.assert.deepStrictEqual
 const range = _.range
 const print = console.log
 
-const createElem = (type,title) => {
+const makeElem = (type,title) => {
 	const elem = document.createElement(type)
 	elem.innerText = title
 	elem.style.float = 'left'
@@ -12,48 +13,31 @@ const createElem = (type,title) => {
 	return elem
 }
 
-const createPara = (title) => {
-	const para = createElem('p',title)
-	para.style.fontSize = '500%'
+const makeDiv = (title) => {
+	const para = makeElem('div',title)
+	para.style.fontSize = '250%'
 	return para
 }
 
-const createButton = (title,click) => {
-	const button = createElem('button',title)
-  button.addEventListener('click',click)
-  button.setAttribute('class', 'my-button')
+const makeButton = (title,click) => {
+	const button = makeElem('button',title)
+	button.onclick = click
+	button.setAttribute('class', 'my-button')
 	button.style.fontSize = '250%'
-  return button
-}
-
-const update = (op) => {
-	let value = parseInt(from.innerText)
-	if (op == '/2' && value % 2 == 1) return 
-	history.push(value)
-  if (op == '+2') value += 2
-  if (op == '*2') value *= 2
-	if (op == '/2') value /= 2
-	from.innerText = value
-	counter.innerText = history.length
-}
-
-const undo = () => {
-	if (history.length==0) return
-	from.innerText = history.pop()
-	counter.innerText = history.length
+	return button
 }
 
 function row () {
-	const margin = 0.3 // %
+	const margin = 0 //.3 // %
 	const lst = Array.from(arguments)
 	let total = 0
-	for (let i of range(0,lst.length,2)) total += lst[i+1]
+	for (const i of range(0,lst.length,2)) total += lst[i+1]
 	const widths = []
-	for (let i of range(0,lst.length,2)) {
+	for (const i of range(0,lst.length,2)) {
 		const element = lst[i]
-		const position = 100 * lst[i+1]/total
-		widths.push(position)
-		element.style.width = `${position-2*margin}%`
+		const width = 100 * lst[i+1]/total
+		widths.push(width)
+		element.style.width = `${width-2*margin}%`
 		element.style.margin = `${margin}%`
 	}
 	return widths
@@ -61,9 +45,28 @@ function row () {
 const dummy = {style:{}}
 assert(row(dummy,1),[100])
 assert(row(dummy,1,dummy,1),[50,50])
-assert(row(dummy,1,dummy,1,dummy,1),[33.333333333333336,33.333333333333336,33.333333333333336])
+assert(row(dummy,1,dummy,1,dummy,1),[100/3,100/3,100/3])
 
 const rnd = (min, max) => Math.floor(Math.random() * (max - min) ) + min
+
+//////////////////////////////////////////////
+
+const update = (op) => {
+	let value = parseInt(from.innerText)
+	if (op == '/2' && value % 2 == 1) return 
+	history.push(value)
+	if (op == '+2') value += 2
+	if (op == '*2') value *= 2
+	if (op == '/2') value /= 2
+	from.innerText = value
+	counter.innerText = history.length
+}
+
+const undo = () => {
+	if (history.length == 0) return
+	from.innerText = history.pop()
+	counter.innerText = history.length
+}
 
 const newGame = () => {
 	from.innerText = rnd(1,20)
@@ -76,17 +79,18 @@ const root = document.getElementById('root')
 
 const history = []
 
-const from = createPara(0)
-const to = createPara(0)
+const from = makeDiv(0)
+const to = makeDiv(0)
 
-const add = createButton('+2', () => update('+2'))
-const mul = createButton('*2', () => update('*2'))
-const div = createButton('/2', () => update('/2'))
+const add = makeButton('+2', () => update('+2'))
+const mul = makeButton('*2', () => update('*2'))
+const div = makeButton('/2', () => update('/2'))
 
-const bnew = createButton('new', () => newGame())
-const counter = createPara(0)
+const bnew = makeButton('new', () => newGame())
+const counter = makeDiv(0)
+const bundo = makeButton('undo', () => undo())
+
 counter.style.fontSize='250%'
-const bundo = createButton('undo', () => undo())
 
 if (innerWidth <= 500) {
 	row(from,1)

@@ -21,6 +21,7 @@
 
 * Use row() to set the widths of the elements
 * The numbers are relative. Any numbers will do. Percent, pixels, inches, whatever.
+* Chose one for all if you hesitate.
 * row(a,1,b,1) <=> 1 + 1 == 2
 * row(a,0.5,b,1.5) <=> 0.5 + 1.5 == 2
 * row(a,1,b,1,c,1) <=> 1 + 1 + 1 == 3

@@ -12,7 +12,7 @@ const createElem = (type,title) => {
 	return elem
 }
 
-const createPara = (title) => {
+const createDiv = (title) => {
 	const para = createElem('p',title)
 	para.style.fontSize = '500%'
 	return para
@@ -54,7 +54,7 @@ assert(row(dummy,0.5,dummy,1.5),[25,75])
 assert(row(dummy,1.5,dummy,0.5),[75,25])
 
 const root = document.getElementById('root')
-const number = createPara(0)
+const number = createDiv(0)
 number.style.fontSize = '250%'
 const incr = createButton('incr', () => update('incr'))
 
