@@ -1,5 +1,6 @@
 "use strict"
 
+
 const assert = chai.assert.deepStrictEqual
 const range = _.range
 const print = console.log
