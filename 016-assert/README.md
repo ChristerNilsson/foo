@@ -51,5 +51,6 @@ Milliseconds instead of seconds.
 
 ## Please note!
 
-* Disabling all asserts does not stop functions from evaluating
 * Target application area for assert, is education, not production
+* Disabling all asserts does not stop functions from evaluating
+* It is still possible to keep all tests in a separate directory structure. But, then you lose the advantage of seeing function + asserts together.
