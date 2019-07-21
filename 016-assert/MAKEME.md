@@ -16,7 +16,7 @@ function doubleOddNumbers(numbers) {
 }
 
 assert(doubleOddNumbers([1,2,3,4]),[2,6], 'Message')
-assert(doubleOddNumbers([4,7,1,2]),[14,22])	
+assert(doubleOddNumbers([4,7,1,2]),[14,2])	
 ```
 
 Rewrite the above `doubleOddNumbers` function using `map` and `filter`; don't forget to use `=>`.
