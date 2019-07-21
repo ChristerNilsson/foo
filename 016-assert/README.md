@@ -1,61 +1,55 @@
 # Assert
 
-## Installation
-
-Terminal
-
+## Install
 ```
+// Terminal
 npm install
 npm install chai
 ```
 
-## Disable assert
-
-assert.js
-
+## Enable all
 ```
-function assert (a,b) {}
-```
-
-## Enable assert
-
-assert.js
-
-```
+// assert.js
 const assert = require('chai').assert.deepEqual
 ```
 
-## Require assert
-
-*.js
-
+## Disable all
 ```
+// assert.js
+const assert = function() {}
+```
+
+## Require
+```
+// *.js
 const assert = require('./assert').assert
 ```
 
-## Use assert
-
-*.js
-
+## Use
 ```
+// *.js
 assert(1+2,3)
 ```
 
 ## test.js
-
 ```
+// test.js
 require('./map-filter')
 require('./maartjes-work')
 ```
 
 ## Execute test
-
-Terminal
-
 ```
+// Terminal
 node homework/test.js
 ```
 
 ## Motivation
 
 Much, much faster than jest.
+Milliseconds instead of seconds.
+
+## Please note!
+
+* Disabling all asserts does not stop functions from evaluating
+* Target application area for assert, is education, not production
