@@ -1,3 +1,3 @@
-const assert = function() {}
-//const assert = require('chai').assert.deepEqual
+//const assert = function() {}
+const assert = require('chai').assert.deepEqual
 module.exports = { assert }
