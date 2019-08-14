@@ -20,13 +20,12 @@ class Ball  {
 		this.active = true
 	}
 
-	inside = (mx,my) => dist(mx,my,this.x,this.y)
+	inside = (mx,my) => dist(mx,my,this.x,this.y) < this.radius
 
-	draw () {
-		const x = this.x
+	draw = () => {
 		if (!this.active) return
 		fill(this.r, this.g, this.b)
-		ellipse(x, this.y,2*this.radius,2*this.radius)
+		ellipse(this.x, this.y,2*this.radius,2*this.radius)
 		this.x += this.vx
 		if (this.x + this.radius > width) this.vx = -this.vx
 		if (this.x - this.radius < 0) this.vx = -this.vx
@@ -42,7 +41,7 @@ class Ball  {
 function setup () {
 	createCanvas(windowWidth,windowHeight)
 	ellipseMode(CENTER)
-	for (const i in range(500)) {
+	for (const i in range(10)) {
 		const x = width*random()
 		const y = 100*random()
 		const radius = 50 + 50*random()
@@ -59,19 +58,13 @@ function draw () {
 	background(128)
 	for (const ball of balls)
 		ball.draw()
-	fill(0)
-	textSize(100)
-	text(round(frameRate()),100,100)
 }
 
-function mousePressed() {
+function mousePressed () {
 	for (const ball of balls) {
 		if (ball.inside(mouseX,mouseY)) {
 			ball.active = false
-			return
 		}
 	}
 }
 	
-// https://p5js.org/reference/#/p5/mousePressed
-// https://p5js.org/reference/#group-Events
