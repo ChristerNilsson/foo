@@ -5,7 +5,22 @@ const range = _.range
 const print = console.log
 
 const GRAVITY = 0.1
+
 let balls = []
+let score = null
+
+class Score {
+	constructor () {
+		this.start = new Date()
+		this.stopp = new Date()
+		this.clicks = 0
+	}
+	click = () => {
+		this.clicks++
+		this.stopp = new Date()
+	}	
+	value = () => round((this.stopp-this.start)/1000) + this.clicks*20
+}
 
 class Ball  {
 	constructor (x,y,radius,vx,vy,r,g,b) {
@@ -31,6 +46,7 @@ class Ball  {
 function setup () {
 	createCanvas(windowWidth,windowHeight)
 	ellipseMode(CENTER)
+	textAlign(CENTER,CENTER)
 	for (const i of range(10)) {
 		const x = width*random()
 		const y = 100*random()
@@ -44,14 +60,24 @@ function setup () {
 		balls.push(ball)
 	}
 	balls.sort((a,b) => b.radius - a.radius)
+	score = new Score()
+}
+
+function showScore() {
+	noFill()
+	stroke(0)
+	textSize(800)
+	text(score.value(),width/2,height/2)
 }
 
 function draw () {
 	background(128)
+	showScore()
 	balls.forEach(ball => ball.draw())
 }
 
 function mousePressed () {
 	balls = balls.filter(ball => ! ball.inside(mouseX,mouseY))
+	score.click()	
 } 
 	
