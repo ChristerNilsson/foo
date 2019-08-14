@@ -43,6 +43,7 @@ function setup () {
 		const ball = new Ball(x,y,radius,vx,vy,r,g,b)
 		balls.push(ball)
 	}
+	balls.sort((a,b) => b.radius - a.radius)
 }
 
 function draw () {
@@ -50,5 +51,7 @@ function draw () {
 	balls.forEach(ball => ball.draw())
 }
 
-const mousePressed = () => balls = balls.filter(ball => ! ball.inside(mouseX,mouseY))
+function mousePressed () {
+	balls = balls.filter(ball => ! ball.inside(mouseX,mouseY))
+} 
 	

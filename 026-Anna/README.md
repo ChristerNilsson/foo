@@ -1,2 +1,8 @@
-* https://p5js.org/reference/#/p5/mousePressed
-* https://p5js.org/reference/#group-Events
+# Bouncing Balls
+
+[Try it!](https://christernilsson.github.io/foo/026-Anna)
+
+# Purpose
+
+* Try to kill all balls with as few clicks as possible
+* One click can kill more than one ball!
