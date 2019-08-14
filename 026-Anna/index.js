@@ -4,7 +4,7 @@ const assert = chai.assert.deepEqual
 const range = _.range
 const print = console.log
 
-const GRAVITY = 0.5
+const GRAVITY = 0.1
 const balls = []
 
 class Ball  {
@@ -20,21 +20,30 @@ class Ball  {
 		this.active = true
 	}
 
-	inside = (mx,my) => dist(mx,my,this.x,this.y) < this.radius
+	inside (mx,my) {
+		return dist(mx,my,this.x,this.y) < this.radius
+	}
 
-	draw = () => {
-		if (!this.active) return
-		fill(this.r, this.g, this.b)
-		ellipse(this.x, this.y,2*this.radius,2*this.radius)
+	update () {
 		this.x += this.vx
-		if (this.x + this.radius > width) this.vx = -this.vx
-		if (this.x - this.radius < 0) this.vx = -this.vx
+		if (this.x + this.radius > width) {
+			this.vx = -this.vx
+		}
+		if (this.x - this.radius < 0) {
+			this.vx = -this.vx
+		}
 	
 		this.y += this.vy
-		if (this.y + this.radius > height) 
+		if (this.y + this.radius > height) {
 			this.vy = -this.vy
-		else 
+		} else {
 			this.vy += GRAVITY	
+		}
+	}
+
+	draw () {
+		fill(this.r, this.g, this.b)
+		ellipse(this.x, this.y,2*this.radius,2*this.radius)
 	}
 }
 
@@ -56,8 +65,12 @@ function setup () {
 
 function draw () {
 	background(128)
-	for (const ball of balls)
-		ball.draw()
+	for (const ball of balls) {
+		if (ball.active) {
+			ball.draw()
+			ball.update()	
+		}
+	}
 }
 
 function mousePressed () {
