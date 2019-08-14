@@ -26,10 +26,7 @@ class Ball  {
 
 	update () {
 		this.x += this.vx
-		if (this.x + this.radius > width) {
-			this.vx = -this.vx
-		}
-		if (this.x - this.radius < 0) {
+		if (this.x + this.radius > width || this.x < this.radius) {
 			this.vx = -this.vx
 		}
 	
@@ -59,7 +56,8 @@ function setup () {
 		const r = 255*random()
 		const g = 255*random()
 		const b = 255*random()
-		balls.push(new Ball(x,y,radius,vx,vy,r,g,b))
+		const ball = new Ball(x,y,radius,vx,vy,r,g,b)
+		balls.push(ball)
 	}
 }
 
