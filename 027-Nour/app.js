@@ -41,12 +41,9 @@ function createAndAppend(parent,typ,attributes={}) {
   return elem
 }
 
-const ul = createAndAppend(document.getElementById('root'), 'ul', {})
+const ul = createAndAppend(document.body, 'ul', {})
 
-for (const book of books) {
-	console.log(book)
-	createAndAppend(ul, 'li', {value : 'Book', innerHTML: book.title})
+for (const index in books) {
+	const book = books[index]
+	createAndAppend(ul, 'li', {value : index, innerHTML: book.title})
 }
-
-// in -> key
-// of -> value
