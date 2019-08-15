@@ -1,4 +1,4 @@
-const assert = chai.assert.deepStrictEqual
+const assert = chai.assert.deepEqual
 
 function fetch(url, callback)	{
 	console.log('fetch',url)
@@ -9,7 +9,14 @@ function fetch(url, callback)	{
 	req.send()
 }
 
+fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100',e)
 fetch('repos.json', f)
+fetch('AngularJS/contributors.json', g)
+fetch('tdd-game/contributors.json', h)
+
+function e (repos) {
+	console.log('e',repos.length)
+}
 
 function f (repos) {
 	console.log('f',repos.length)
@@ -25,8 +32,6 @@ function f (repos) {
 	assert(repos[1].name, 'tdd-game')
 }
 
-fetch('AngularJS/contributors.json', g)
-
 function g (contributors) {
 	console.log('g',contributors.length)
 	assert(contributors[0].login, 'isalga')
@@ -35,14 +40,7 @@ function g (contributors) {
 	assert(contributors[0].contributions, 24)
 }
 
-fetch('tdd-game/contributors.json', h)
-
 function h (contributors) {
 	console.log('h',contributors.length)
 	assert(contributors[0].login, 'M3kH')
 }
-
-// fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100',k)
-// function k (repos) {
-// 	console.log('k',repos.length)
-// }
