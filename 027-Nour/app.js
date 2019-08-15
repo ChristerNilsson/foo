@@ -1,15 +1,6 @@
 'use strict'
 
-// const titles = [
-//   'harry_potter_chamber_secrets',
-//   'alchemist', 
-//   'paula',
-//   'orlando',
-//   'divine-comedy',
-//   'the-odyssey',
-// ];
-
-let books = [
+const books = [
   {
     title :"Harry Potter Chamber of Secrets",
     language:"english",
@@ -26,9 +17,9 @@ let books = [
     author:"isabel allende",
   },
   {
-      title:"Orlando",
-      language:"english",
-      author:"virginia-wolf",
+		title:"Orlando",
+		language:"english",
+		author:"virginia-wolf",
   },
   {
     title:"Divine Comedy",
@@ -46,7 +37,7 @@ function createAndAppend(parent,typ,attributes={}) {
 	const elem = document.createElement(typ)
 	parent.appendChild(elem)
 	for (const key in attributes)
-    	elem[key] = attributes[key]	
+    elem[key] = attributes[key]	
   return elem
 }
 
@@ -56,11 +47,6 @@ for (const book of books) {
 	console.log(book)
 	createAndAppend(ul, 'li', {value : 'Book', innerHTML: book.title})
 }
-
-
-  
-
-
 
 // in -> key
 // of -> value
