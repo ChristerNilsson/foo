@@ -12,6 +12,7 @@ class Util {
 		for (const key in attributes) {
 			const value = attributes[key]
 			"html" === key ? element.innerHTML=value : element.setAttribute(key,value)
+			// attributes[key] = value
 		}
 		return element
 	} 
@@ -31,19 +32,19 @@ class Util {
 
 }
 
+/////////////////////////////////////////
+
 const parent = document.createElement('div')
-const img = Util.createAndAppend('img', parent, {innerText:'Adam',   html:'<br>', width:150})
-const div = Util.createAndAppend('div', parent, {innerText:'Bertil', html:'<br>', width:200})
+const img = Util.createAndAppend('img', parent, {html:'<br>', width:150})
+const div = Util.createAndAppend('div', parent, {html:'<br>', width:200})
 
 assert(parent.children.length, 2)
 
 assert(img.tagName, 'IMG')
-assert(img.innerText, '')
 assert(img.innerHTML, '') // blocked
 assert(img.width, 150)
 
 assert(div.tagName, 'DIV')
-assert(div.innerText, '')
 assert(div.innerHTML, '<br>')
 assert(div.width, undefined) // blocked
 

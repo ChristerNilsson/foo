@@ -20,8 +20,8 @@ class View {
 			this.repos.forEach( (repo,key) => { // key is an index
 				Util.createAndAppend("option", select, { html : repo.name(), value : key } ) 
 			} )
-			this.fetchAndRender(select.value) 
-		} catch(err) { 
+			this.fetchAndRender(select.value)
+		} catch(err) {
 			this.renderError(err)
 		}
 	}
