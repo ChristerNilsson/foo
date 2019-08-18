@@ -9,9 +9,9 @@ class Repository {
 		const table = Util.createAndAppend("table", parent)
 		const tbody = Util.createAndAppend("tbody", table)
 		this.addRow(tbody, "Repository", `<a href="${this.data.html_url}" target="_blank">${this.data.name}</a>`)
-		this.data.description && this.addRow(tbody,"Description", this.data.description)
+		if (this.data.description) this.addRow(tbody,"Description", this.data.description)
 		this.addRow(tbody, "Forks", this.data.forks)
-		this.addRow(tbody, "Updated", new Date(this.data.updated_at).toLocaleString())
+		this.addRow(tbody, "Updated", new Date(this.data.updated_at).toLocaleString('sv'))
 	}
 
 	addRow(table, prompt, value) {
@@ -22,10 +22,6 @@ class Repository {
 
 	fetchContributors() {
 		return Util.fetchJSON(this.data.contributors_url)
-	}
-
-	name() {
-		return this.data.name
 	}
 
 }

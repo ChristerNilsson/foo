@@ -3,24 +3,26 @@
 class View { 
 
 	constructor (url) { 
+		this.repos = null
+		this.container = null
 		this.initialize(url)
 	}
 	
 	async initialize(url) { 
-		const root = document.getElementById("root") 
+		const root = document.body
 		const header = Util.createAndAppend("header", root, { class : "header" })
 		Util.createAndAppend("p", header, { html : "HYF Repositories"})
 		const select = Util.createAndAppend("select", header, { class : "repo-selector", "aria-label" : "HYF Repositories" })
 		select.onchange = () => this.fetchAndRender(select.value)
-		Util.createAndAppend("div", root, { id : "container" })
+		this.container = Util.createAndAppend("div", root, {id : 'container'})
 		try { 
-			const repos = await Util.fetchJSON(url)
-			this.repos = repos.sort( (a,b) => a.name.localeCompare(b.name) )
-									      .map( repo => new Repository(repo) )
-			this.repos.forEach( (repo,key) => { // key is an index
-				Util.createAndAppend("option", select, { html : repo.name(), value : key } ) 
+			const repos = await Util.fetchJSON(url) // ftech all repos
+			this.repos = repos.sort( (a,b) => a.name.localeCompare(b.name,'sv') )  // sort on repo.name
+									      .map( repo => new Repository(repo) ) // convert to the class Repository
+			this.repos.forEach( (repo,key) => { // key is an index. Fill the DropDownList
+				Util.createAndAppend("option", select, { html : repo.data.name, value : key } ) 
 			} )
-			this.fetchAndRender(select.value)
+			this.fetchAndRender(select.value) // Fetch Contributors for the current Repo
 		} catch(err) {
 			this.renderError(err)
 		}
@@ -28,12 +30,11 @@ class View {
 	
 	async fetchAndRender(key) { 
 		const repo = this.repos[key]
-		const container = document.getElementById("container")
 		try { 
 			const contributors = await repo.fetchContributors()
-			container.innerHTML = ""
-			const divL = Util.createAndAppend("div", container, { class : "left-div whiteframe" })
-			const divR = Util.createAndAppend("div", container, { class : "right-div whiteframe" })
+			this.container.innerHTML = ""
+			const divL = Util.createAndAppend("div", this.container, { class : "left-div whiteframe" })
+			const divR = Util.createAndAppend("div", this.container, { class : "right-div whiteframe" })
 			Util.createAndAppend("p", divR, { html : "Contributions", class : "contributor-header" })
 			const ul = Util.createAndAppend("ul", divR, { class : "contributor-list" })
 			repo.render(divL)
@@ -45,9 +46,8 @@ class View {
 	}
 	
 	renderError(err) { 
-		const container = document.getElementById("container")
-		container.innerHTML = ""
-		Util.createAndAppend("div", container, { html : err.message, class : "alert alert-error" })
+		this.container.innerHTML = ""
+		Util.createAndAppend("div", this.container, { html : err.message, class : "alert alert-error" })
 	}
 }
 
