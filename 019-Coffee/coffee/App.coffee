@@ -9,7 +9,6 @@ fetch URL
 	.then (json) =>
 		repos = json
 		repos.sort (a,b) => a.name.localeCompare b.name
-		print repos
 		repo = repos[0]
 		fetch repo.contributors_url
 			.then (response) => response.json()
@@ -28,6 +27,7 @@ view = (repoNr) ->
 			select0.value = repoNr
 			select0.onchange = =>
 				repo = repos[select0.value]
+				
 				fetch repo.contributors_url
 					.then (response) => response.json()
 					.then (json) =>
@@ -57,12 +57,12 @@ view = (repoNr) ->
 				p { text : "Contributions", class : "contributor-header" }
 				ul { class : "contributor-list" }, ->
 					for contributor in contributors
-						li0 = li { class : "contributor-item", "aria-label" : contributor.login, tabindex : 0}, ->
-							img { src : contributor.avatar_url, height : 48, class : "contributor-avatar"}
-							div { class : "contributor-data"}, ->
-								div { text : contributor.login }
-								div { text : contributor.contributions, class : "contributor-badge" }
 						do (contributor) =>
+							li0 = li { class : "contributor-item", "aria-label" : contributor.login, tabindex : 0}, ->
+								img { src : contributor.avatar_url, height : 48, class : "contributor-avatar"}
+								div { class : "contributor-data"}, ->
+									div { text : contributor.login }
+									div { text : contributor.contributions, class : "contributor-badge" }
 							li0.onclick = => window.open contributor.html_url, "_blank"
 							li0.onkeyup = (t) ->
 								if t.key == 'Enter' then window.open contributor.html_url, "_blank"
