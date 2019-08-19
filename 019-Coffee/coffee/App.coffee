@@ -1,8 +1,6 @@
 URL = "https://api.github.com/orgs/HackYourFuture/repos?per_page=100"
 
-repos = null
 repo = null
-contributors = []
 container = null
 
 fetch URL
@@ -11,38 +9,33 @@ fetch URL
 		repos = json
 		repos.sort (a,b) => a.name.localeCompare b.name
 		repo = repos[0]
-		fetch repo.contributors_url
-			.then (response) => response.json()
-			.then (json) =>
-				contributors = json
+		body ->
+			buildRepos repos
+			container = div {id : 'container'}, ->
+				fetchContributors()
+		stack.push container
 
-				body ->
-					buildRepos()
-					container = div {id : 'container'}, ->
-						buildRepo repo
-						buildContributors repo
-
-buildRepos = ->
+buildRepos = (repos) ->
 	header { class : "header" }, ->
 		p { text : "HYF Repositories"}
 		select0 = select { class : "repo-selector", "aria-label" : "HYF Repositories" }, ->
 			for repo1,key in repos
 				option { text : repo1.name, value : key }
-		select0.value = 0
 		select0.onchange = =>
 			repo = repos[select0.value]
-			fetch repo.contributors_url
-				.then (response) => response.json()
-				.then (json) =>
-					contributors = json
-					stack.push container
-					container.innerHTML = ''
-					buildRepo() # repo
-					buildContributors() # repo
-					stack.pop()
-					print stack
+			container.innerHTML = ''
+			fetchContributors()
+		select0.value = 0
 
-buildRepo = () ->
+fetchContributors  = ->
+	fetch repo.contributors_url
+		.then (response) => response.json()
+		.then (json) =>
+			contributors = json
+			buildRepo()
+			buildContributors contributors
+
+buildRepo = ->
 	div { class : "left-div whiteframe" }, ->
 		table {}, ->
 			tbody {}, ->
@@ -60,7 +53,7 @@ buildRepo = () ->
 					td {text: 'Updated'}
 					td {text: new Date(repo.updated_at).toLocaleString('sv')}
 
-buildContributors = () ->
+buildContributors = (contributors) ->
 	div { class : "right-div whiteframe" }, ->
 		p { text : "Contributions", class : "contributor-header" }
 		ul { class : "contributor-list" }, ->
@@ -74,5 +67,3 @@ buildContributors = () ->
 					li0.onclick = => window.open contributor.html_url, "_blank"
 					li0.onkeyup = (t) ->
 						if t.key == 'Enter' then window.open contributor.html_url, "_blank"
-
-
