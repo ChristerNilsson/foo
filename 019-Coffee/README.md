@@ -3,9 +3,7 @@
 [Original](https://hyf-github.netlify.com/)
 
 * App: Separate trees
-* App1: One big tree
+* App1: One big tree. The select has to be kept.
 
 Did not succeed in using OOP here.
 Something with async/await.
-
-Using prefix x for xonclick and so on to not interfere with window.onclick and so on.
