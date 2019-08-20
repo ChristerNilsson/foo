@@ -2,6 +2,8 @@ class Page
 	constructor : ->
 		@ancestors = []
 
+	father : ->	_.last @ancestors
+
 	createAndAppend : (type, parent, attributes = {}) =>
 		element = document.createElement type
 		parent.appendChild element
@@ -14,7 +16,7 @@ class Page
 
 	crap : (attributes, f, type) =>
 		if typeof type == 'object' then @ancestors.push type
-		else @ancestors.push @createAndAppend type, _.last(@ancestors), attributes
+		else @ancestors.push @createAndAppend type, @father(), attributes
 		f()
 		@ancestors.pop()
 
@@ -39,7 +41,7 @@ class Page
 	tr :    (attributes, f = =>) => @crap attributes, f, 'tr'
 	ul :    (attributes, f = =>) => @crap attributes, f, 'ul'
 
-	addListener : (name,f) => _.last(@ancestors).addEventListener name,f
+	addListener : (name,f) => @father().addEventListener name,f
 
 	wrap : (parent,f) =>
 		@ancestors.push parent

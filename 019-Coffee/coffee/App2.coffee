@@ -1,27 +1,30 @@
 class GitHub extends Page
 
-	init : (url) =>
+	constructor : (url) ->
+		super()
+		@buildTree url,0
+
+	buildTree : (url,index) =>
+		leftDiv = null
+		rightDiv = null
 		@repos = await fetchJSON url
 		@repos.sort (a,b) => a.name.localeCompare b.name
-		@buildTree 0
-
-	buildTree : (index) =>
 		@body =>
 			@header { class: "header" }, =>
 				@p { text: "HYF Repositories"}
 				@select { class: "repo-selector", "aria-label": "HYF Repositories" }, =>
 					@addListener 'change', (evt) => 
 						repo = @repos[evt.target.value]
-						@buildLeft repo, @leftDiv
-						@buildRight repo, @rightDiv
+						@buildLeft repo, leftDiv
+						@buildRight repo, rightDiv
 					@option { text: repo1.name, value: key } for repo1,key in @repos
 			@div {id: 'container'}, =>
-				@leftDiv = @div { class: "left-div whiteframe" }
-				@rightDiv = @div { class: "right-div whiteframe" }
+				leftDiv = @div { class: "left-div whiteframe" }
+				rightDiv = @div { class: "right-div whiteframe" }
 
 		repo = @repos[index]
-		@buildLeft repo, @leftDiv
-		@buildRight repo, @rightDiv
+		@buildLeft repo, leftDiv
+		@buildRight repo, rightDiv
 
 	buildLeft : (repo,parent) =>
 		@wrap parent, =>
@@ -41,7 +44,7 @@ class GitHub extends Page
 						@td {text: new Date(repo.updated_at).toLocaleString('sv')}
 
 	buildRight : (repo,parent) =>
-		contributors = await fetchJSON repo.contributors_url
+		contributors = await fetchJSON repo.contributors_url # await before wrap
 		@wrap parent, =>
 			@p { text: "Contributions", class: "contributor-header" }
 			@ul { class: "contributor-list" }, =>
@@ -55,5 +58,5 @@ class GitHub extends Page
 								@div { text: contributor.login }
 								@div { text: contributor.contributions, class: "contributor-badge" }
 
-github = new GitHub
-github.init "https://api.github.com/orgs/HackYourFuture/repos?per_page=100"
+github = new GitHub "https://api.github.com/orgs/HackYourFuture/repos?per_page=100"
+#github.init 
