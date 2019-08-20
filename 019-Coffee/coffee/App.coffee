@@ -11,8 +11,8 @@ initialize = ->
 		buildRepos repos
 		container = div {id : 'container'}, ->
 			fetchContributors()
-	stack.push container
-	print document.body
+	ancestors.push container
+	console.dir document.body
 
 buildRepos = (repos) ->
 	header { class : "header" }, ->

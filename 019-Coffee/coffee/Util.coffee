@@ -12,13 +12,13 @@ createAndAppend = (type, parent, attributes = {}) =>
 			element.setAttribute key, value
 	element
 
-stack = []
+ancestors = []
 
 crap = (attributes, f, type) =>
-	if typeof type == 'object' then stack.push type
-	else stack.push createAndAppend type, _.last(stack), attributes
+	if typeof type == 'object' then ancestors.push type
+	else ancestors.push createAndAppend type, _.last(ancestors), attributes
 	f()
-	stack.pop()
+	ancestors.pop()
 
 head =  (            f = =>) => crap {}, f, document.head
 body =  (            f = =>) => crap {}, f, document.body
