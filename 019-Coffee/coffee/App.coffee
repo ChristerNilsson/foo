@@ -18,12 +18,12 @@ buildRepos = (repos) ->
 	header { class : "header" }, ->
 		p { text : "HYF Repositories"}
 		select0 = select { class : "repo-selector", "aria-label" : "HYF Repositories" }, ->
+			xonchange =>
+				repo = repos[select0.value]
+				container.innerHTML = ''
+				fetchContributors()
 			for repo1,key in repos
 				option { text : repo1.name, value : key }
-		select0.onchange = =>
-			repo = repos[select0.value]
-			container.innerHTML = ''
-			fetchContributors()
 		select0.value = 0
 
 fetchContributors = ->
@@ -55,13 +55,12 @@ buildContributors = (contributors) ->
 		ul { class : "contributor-list" }, ->
 			for contributor in contributors
 				do (contributor) =>
-					li0=li {class:"contributor-item", "aria-label":contributor.login, tabindex:0}, ->
+					li {class:"contributor-item", "aria-label":contributor.login, tabindex:0}, ->
+						xonclick => window.open contributor.html_url, "_blank"
+						xonkeyup (t) -> if t.key == 'Enter' then window.open contributor.html_url, "_blank"
 						img { src : contributor.avatar_url, height : 48, class : "contributor-avatar"}
 						div { class : "contributor-data"}, ->
 							div { text : contributor.login }
 							div { text : contributor.contributions, class : "contributor-badge" }
-					li0.onclick = => window.open contributor.html_url, "_blank"
-					li0.onkeyup = (t) ->
-						if t.key == 'Enter' then window.open contributor.html_url, "_blank"
 
 initialize URL
