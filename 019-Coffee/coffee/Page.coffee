@@ -41,6 +41,12 @@ class Page
 
 	addListener : (name,f) => _.last(@ancestors).addEventListener name,f
 
+	wrap : (parent,f) =>
+		@ancestors.push parent
+		parent.innerHTML = ''
+		f()
+		@ancestors.pop()
+
 fetchJSON = (url) ->
 	new Promise (success,failure) -> 
 		req = new XMLHttpRequest()

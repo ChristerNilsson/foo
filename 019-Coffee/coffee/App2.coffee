@@ -10,17 +10,21 @@ class GitHub extends Page
 			@header { class: "header" }, =>
 				@p { text: "HYF Repositories"}
 				@select { class: "repo-selector", "aria-label": "HYF Repositories" }, =>
-					@addListener 'change', (evt) => @buildContainer @repos[evt.target.value],container
+					@addListener 'change', (evt) => 
+						repo = @repos[evt.target.value]
+						@buildLeft repo, @leftDiv
+						@buildRight repo, @rightDiv
 					@option { text: repo1.name, value: key } for repo1,key in @repos
-			container = @div {id: 'container'}
-		@ancestors.push container
-		@buildContainer @repos[index],container
+			@div {id: 'container'}, =>
+				@leftDiv = @div { class: "left-div whiteframe" }
+				@rightDiv = @div { class: "right-div whiteframe" }
 
-	buildContainer : (repo,container) =>
-		print @ancestors.length
-		contributors = await fetchJSON repo.contributors_url
-		container.innerHTML = ''
-		@div { class: "left-div whiteframe" }, =>
+		repo = @repos[index]
+		@buildLeft repo, @leftDiv
+		@buildRight repo, @rightDiv
+
+	buildLeft : (repo,parent) =>
+		@wrap parent, =>
 			@table {}, =>
 				@tbody {}, =>
 					@tr {}, =>
@@ -35,7 +39,10 @@ class GitHub extends Page
 					@tr {}, =>
 						@td {text: 'Updated'}
 						@td {text: new Date(repo.updated_at).toLocaleString('sv')}
-		@div { class: "right-div whiteframe" }, =>
+
+	buildRight : (repo,parent) =>
+		contributors = await fetchJSON repo.contributors_url
+		@wrap parent, =>
 			@p { text: "Contributions", class: "contributor-header" }
 			@ul { class: "contributor-list" }, =>
 				for contributor in contributors
