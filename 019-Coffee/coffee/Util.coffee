@@ -41,9 +41,9 @@ title = (attributes, f = =>) => crap attributes, f, 'title'
 tr =    (attributes, f = =>) => crap attributes, f, 'tr'
 ul =    (attributes, f = =>) => crap attributes, f, 'ul'
 
-xonclick  = (f) => _.last(ancestors).addEventListener 'click',f
-xonkeyup  = (f) => _.last(ancestors).addEventListener 'keyup',f
-xonchange = (f) => _.last(ancestors).addEventListener 'change',f
+addListener = (name,f) => _.last(ancestors).addEventListener name,f
+#xonkeyup  = (f) => _.last(ancestors).addEventListener 'keyup',f
+#xonchange = (f) => _.last(ancestors).addEventListener 'change',f
 
 fetchJSON = (url) ->
 	new Promise (success,failure) -> 

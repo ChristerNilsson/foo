@@ -6,7 +6,7 @@ buildTree = (repos, index) ->
 		header { class : "header" }, ->
 			p { text : "HYF Repositories"}
 			select0 = select { class : "repo-selector", "aria-label" : "HYF Repositories" }, ->
-				xonchange => buildTree repos, select0.value
+				addListener 'change', => buildTree repos, select0.value
 				for repo1,key in repos
 					option { text : repo1.name, value : key }
 			select0.value = index
@@ -32,8 +32,8 @@ buildTree = (repos, index) ->
 					for contributor in contributors
 						do (contributor) =>
 							li {class:"contributor-item", "aria-label":contributor.login, tabindex:0}, ->
-								xonclick => window.open contributor.html_url, "_blank"
-								xonkeyup (t) => if t.key == 'Enter' then window.open contributor.html_url, "_blank"
+								addListener 'click', => window.open contributor.html_url, "_blank"
+								addListener 'keyup', (t) => if t.key == 'Enter' then window.open contributor.html_url, "_blank"
 								img { src : contributor.avatar_url, height : 48, class : "contributor-avatar"}
 								div { class : "contributor-data"}, ->
 									div { text : contributor.login }

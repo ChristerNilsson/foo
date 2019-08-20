@@ -18,7 +18,7 @@ buildRepos = (repos) ->
 	header { class : "header" }, ->
 		p { text : "HYF Repositories"}
 		select0 = select { class : "repo-selector", "aria-label" : "HYF Repositories" }, ->
-			xonchange =>
+			addListener 'change', =>
 				repo = repos[select0.value]
 				container.innerHTML = ''
 				fetchContributors()
@@ -56,8 +56,8 @@ buildContributors = (contributors) ->
 			for contributor in contributors
 				do (contributor) =>
 					li {class:"contributor-item", "aria-label":contributor.login, tabindex:0}, ->
-						xonclick => window.open contributor.html_url, "_blank"
-						xonkeyup (t) -> if t.key == 'Enter' then window.open contributor.html_url, "_blank"
+						addListener 'click', => window.open contributor.html_url, "_blank"
+						addListener 'keyup', (t) -> if t.key == 'Enter' then window.open contributor.html_url, "_blank"
 						img { src : contributor.avatar_url, height : 48, class : "contributor-avatar"}
 						div { class : "contributor-data"}, ->
 							div { text : contributor.login }
