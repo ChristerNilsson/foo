@@ -3,17 +3,16 @@ URL = "https://api.github.com/orgs/HackYourFuture/repos?per_page=100"
 repo = null
 container = null
 
-fetch URL
-	.then (response) => response.json()
-	.then (json) =>
-		repos = json
-		repos.sort (a,b) => a.name.localeCompare b.name
-		repo = repos[0]
-		body ->
-			buildRepos repos
-			container = div {id : 'container'}, ->
-				fetchContributors()
-		stack.push container
+initialize = ->
+	repos = await fetchJSON URL
+	repos.sort (a,b) => a.name.localeCompare b.name
+	repo = repos[0]
+	body ->
+		buildRepos repos
+		container = div {id : 'container'}, ->
+			fetchContributors()
+	stack.push container
+	print document.body
 
 buildRepos = (repos) ->
 	header { class : "header" }, ->
@@ -27,13 +26,10 @@ buildRepos = (repos) ->
 			fetchContributors()
 		select0.value = 0
 
-fetchContributors  = ->
-	fetch repo.contributors_url
-		.then (response) => response.json()
-		.then (json) =>
-			contributors = json
-			buildRepo()
-			buildContributors contributors
+fetchContributors = ->
+	contributors = await fetchJSON repo.contributors_url
+	buildRepo()
+	buildContributors contributors
 
 buildRepo = ->
 	div { class : "left-div whiteframe" }, ->
@@ -59,7 +55,7 @@ buildContributors = (contributors) ->
 		ul { class : "contributor-list" }, ->
 			for contributor in contributors
 				do (contributor) =>
-					li0 = li { class : "contributor-item", "aria-label" : contributor.login, tabindex : 0}, ->
+					li0=li {class:"contributor-item", "aria-label":contributor.login, tabindex:0}, ->
 						img { src : contributor.avatar_url, height : 48, class : "contributor-avatar"}
 						div { class : "contributor-data"}, ->
 							div { text : contributor.login }
@@ -67,3 +63,5 @@ buildContributors = (contributors) ->
 					li0.onclick = => window.open contributor.html_url, "_blank"
 					li0.onkeyup = (t) ->
 						if t.key == 'Enter' then window.open contributor.html_url, "_blank"
+
+initialize URL

@@ -41,24 +41,11 @@ title = (attributes, f = =>) => crap attributes, f, 'title'
 tr =    (attributes, f = =>) => crap attributes, f, 'tr'
 ul =    (attributes, f = =>) => crap attributes, f, 'ul'
 
-
-
-# createAndAppend = (typ, parent, attributes={}) { 
-# 	const element = document.createElement(typ)
-# 	parent.appendChild(element)
-# 	for (const key in attributes) {
-# 		const value = attributes[key]
-# 		"html" === key ? element.innerHTML=value : element.setAttribute(key,value)
-# 	}
-# 	return element
-# } 
-
-fetchJSON = (url) =>
-	new Promise (success,failure) => 
+fetchJSON = (url) ->
+	new Promise (success,failure) -> 
 		req = new XMLHttpRequest()
 		req.open "GET",url
 		req.responseType = "json"
-		#req.onload = () => if req.status < 400 then success(req.response) else failure(new Error(`Network error: ${req.status} - ${req.statusText}`))
-		req.onload = () => success req.response
-		#req.onerror = () => failure(new Error("Network request failed"))
+		req.onload = => if req.status < 400 then success req.response else failure new Error req.statusText
+		req.onerror = => failure new Error "Network request failed"
 		req.send()
