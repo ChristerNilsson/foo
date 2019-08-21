@@ -1,50 +1,50 @@
 class GitHub extends Page
 
-	constructor : (url) ->
+	constructor : (@userName) ->
 		super()
-		@buildTree url,0
+		@buildTree "https://api.github.com/orgs/#{@userName}/repos?per_page=100",0
 
 	buildTree : (url,index) =>
+		@repos = await fetchJSON url
 		leftDiv = null
 		rightDiv = null
-		@repos = await fetchJSON url
 		@repos.sort (a,b) => a.name.localeCompare b.name
+		@repo = @repos[index]
 		@body =>
 			@header { class: "header" }, =>
-				@p { text: "HYF Repositories"}
-				@select { class: "repo-selector", "aria-label": "HYF Repositories" }, =>
+				@p { text: @userName}
+				@select { class: "repo-selector", "aria-label": @userName }, =>
 					@addListener 'change', (evt) => 
-						repo = @repos[evt.target.value]
-						@buildLeft repo, leftDiv
-						@buildRight repo, rightDiv
+						@repo = @repos[evt.target.value]
+						@buildLeft leftDiv
+						@buildRight rightDiv
 					@option { text: repo1.name, value: key } for repo1,key in @repos
 			@div {id: 'container'}, =>
 				leftDiv = @div { class: "left-div whiteframe" }
 				rightDiv = @div { class: "right-div whiteframe" }
 
-		repo = @repos[index]
-		@buildLeft repo, leftDiv
-		@buildRight repo, rightDiv
+		@buildLeft leftDiv
+		@buildRight rightDiv
 
-	buildLeft : (repo,parent) =>
+	buildLeft : (parent) =>
 		@wrap parent, =>
 			@table {}, =>
 				@tbody {}, =>
 					@tr {}, =>
 						@td {text: "Repository"}
-						@td {}, => @a {text: repo.name, href: repo.html_url, target: "_blank"}
+						@td {}, => @a {text: @repo.name, href: @repo.html_url, target: "_blank"}
 					@tr {}, =>
 						@td {text: 'Description'}
-						@td {text: repo.description}
+						@td {text: @repo.description}
 					@tr {}, =>
 						@td {text: 'Forks'}
-						@td {text: repo.forks}
+						@td {text: @repo.forks}
 					@tr {}, =>
 						@td {text: 'Updated'}
-						@td {text: new Date(repo.updated_at).toLocaleString('sv')}
+						@td {text: new Date(@repo.updated_at).toLocaleString('sv')}
 
-	buildRight : (repo,parent) =>
-		contributors = await fetchJSON repo.contributors_url # await before wrap
+	buildRight : (parent) =>
+		contributors = await fetchJSON @repo.contributors_url # await goes before wrap
 		@wrap parent, =>
 			@p { text: "Contributions", class: "contributor-header" }
 			@ul { class: "contributor-list" }, =>
@@ -57,6 +57,6 @@ class GitHub extends Page
 							@div { class: "contributor-data"}, =>
 								@div { text: contributor.login }
 								@div { text: contributor.contributions, class: "contributor-badge" }
-
-github = new GitHub "https://api.github.com/orgs/HackYourFuture/repos?per_page=100"
-#github.init 
+ 
+new GitHub "HackYourFuture"
+#new GitHub "FooCoding"
