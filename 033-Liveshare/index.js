@@ -1,9 +1,9 @@
 const assert = chai.assert.deepStrictEqual
 
 const records = {
-	"2548": {
+	"2548": { 
 		"album": "Slippery When Wet",
-		"artist": "Bon Jovi",
+		"artist": "Bon Jovi", 
 		"tracks": [ 
 			"Let It Rock", 
 			"You Give Love a Bad Name" 
@@ -24,31 +24,22 @@ const records = {
 	"5439": {
 		"album": "ABBA Gold"
 	}
-}
+} 
 
 const last = (arr) => arr[arr.length-1]
 const snapShot = (json) => JSON.parse(JSON.stringify(json))
 const recordsCopy = snapShot(records)
 
-updateRecords = (id,  key, value) => {
-	if (records[id] == undefined) records[id] = {}
-	if (value === '') {
-		if (key === '') {
-			delete records[id]
-		} else {
-			delete records[id][key] 
-		}
-	} else { 
-		if (key === 'tracks') {
-			if (! records[id].tracks) records[id].tracks = []
-			records[id].tracks.push(value)
-		} else records[id][key] = value		
-	}
-	console.log(snapShot(records))
+updateRecords = (id, key, value) => {
+	records[id] = records[id] || {}
+	if (key === '') return delete records[id]; else record = records[id]
+	if (value === '') return delete record[key] 
+	if (key === 'tracks') {
+		record[key] = record[key] || []
+		record[key].push(value)
+	} else record[key] = value		
 } 
  
-console.log(snapShot(records))
-
 updateRecords(5439, "artist", "ABBA")
 assert(records[5439].artist, 'ABBA', 'artist should be "ABBA"')
 
