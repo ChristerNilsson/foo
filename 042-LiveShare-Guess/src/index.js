@@ -1,9 +1,8 @@
 'use strict'
 
-const createServer = require('./server')
+const _ = require('lodash')
+const Guess = require('./guess') 
 
-const PORT = 3000
+const range = _.range
 
-createServer().listen(PORT, () => {
-  console.log(`Server listening on http://localhost:${PORT}`)
-})
+Console.log(process.argv)

@@ -1,13 +1,12 @@
-# NIM Server
-
-Without using Express
+# Command line
 
 # Commands
 
-* /a Remove one stick from heap A
-* /b Remove one stick from heap B
-* /c Remove one stick from heap C
-* /a/2 Remove two sticks.
-* /reset Set state to [1,3,5]
-
-[Calculator](http://tiny.cc/f0mtbz)
+```
+command   number   history    response
+reset     82       []
+50                 [50]       Low!
+90                 [50,90]    High!
+82                 [50,90,82] Correct!       
+reset     13       []
+```
