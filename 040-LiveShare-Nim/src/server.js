@@ -13,15 +13,13 @@ function createServer(port) {
 			const sticks = arr[2]
 			res.writeHead(200,{'Content-Type': 'application/json'})
 			nim.human('abc'.indexOf(heap),sticks)
-			res.write(`Human: ${nim}`)
+			res.write(`Human: ${nim}\n`)
 			nim.computer()
 			res.end(`Computer: ${nim}`)
 		} else if (arr.length == 2) {
-			if (arr[1] == 'reset') {
-				nim.reset()
-				res.writeHead(200,{'Content-Type': 'application/json'})
-				res.end(`${nim}`)
-			}
+			if (arr[1] == 'reset') nim.reset()
+			res.writeHead(200,{'Content-Type': 'application/json'})
+			res.end(`${nim}`)
 		}
 	})
 }
