@@ -10,7 +10,7 @@ const range = _.range
 // utf-8 1 byte 2 bytes 3 bytes 4 bytes 
 // google ascii, byte, bit, unicode, utf-8
 
-let lines = fs.readFileSync('data.txt','utf-8')
+let lines = fs.readFileSync('data/data.txt','utf-8')
 lines = JSON.parse(lines)
 //lines.push('bengt')
 
@@ -39,5 +39,5 @@ console.log(params)
 
 lines = JSON.stringify(lines)
 //console.dir(lines)
-fs.writeFileSync('data2.txt',lines) 
+fs.writeFileSync('data/data2.txt',lines) 
 
