@@ -58,6 +58,6 @@ fetchJSON = (url) ->
 		req.onerror = => failure new Error "Network request failed"
 		req.send()
 
-print = () ->
+print = ->
 	console.log arguments[0]
 	arguments[0]

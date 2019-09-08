@@ -4,6 +4,10 @@ class GitHub extends Page
 		super()
 		@buildTree "https://api.github.com/orgs/#{@userName}/repos?per_page=100",0
 
+	build : (leftDiv,rightDiv) ->
+		@buildLeft leftDiv
+		@buildRight rightDiv
+
 	buildTree : (url,index) =>
 		@repos = await fetchJSON url
 		leftDiv = null
@@ -16,15 +20,12 @@ class GitHub extends Page
 				@select { class: "repo-selector", "aria-label": @userName }, =>
 					@addListener 'change', (evt) => 
 						@repo = @repos[evt.target.value]
-						@buildLeft leftDiv
-						@buildRight rightDiv
+						@build leftDiv,rightDiv
 					@option { text: repo1.name, value: key } for repo1,key in @repos
 			@div {id: 'container'}, =>
 				leftDiv = @div { class: "left-div whiteframe" }
 				rightDiv = @div { class: "right-div whiteframe" }
-
-		@buildLeft leftDiv
-		@buildRight rightDiv
+				@build leftDiv,rightDiv
 
 	buildLeft : (parent) =>
 		@wrap parent, =>
