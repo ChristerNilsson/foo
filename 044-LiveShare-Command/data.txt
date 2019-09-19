@@ -1,1 +1,1 @@
-{"level":7,"low":17,"high":17,"secret":17,"history":[64,32,16,24,20,18,17]}
+{"level":7,"low":1,"high":63,"secret":23,"history":[64]}

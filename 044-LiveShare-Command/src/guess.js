@@ -12,8 +12,20 @@ class Guess {
 		this.reset(level)
 	}
 
+	myAssign (a,b) {
+		for (const key in b) a[key] = b[key]
+	}
+
 	read() {                             
-		Object.assign(this, JSON.parse(fs.readFileSync(PATH,'utf-8')))
+		// Object.assign(this, JSON.parse(fs.readFileSync(PATH,'utf-8')))
+		this.myAssign(this,JSON.parse(fs.readFileSync(PATH,'utf-8')))
+		// const a = this
+		// const b = JSON.parse(fs.readFileSync(PATH,'utf-8'))
+		// a.level = b.level
+		// a.low = b.low
+		// a.high = b.high
+		// a.secret = b.secret
+		// a.history = b.history
 	}
 	
 	write() {
